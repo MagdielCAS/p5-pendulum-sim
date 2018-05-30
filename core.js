@@ -1,8 +1,10 @@
 let origin = []
 let bob = []
 let len;
-let angle = 0;
 
+let angle = Math.PI / 4;
+let aVel = 0.0;
+let aAcc = 0.0;
 
 const X = 0,
     Y = 1;
@@ -24,5 +26,10 @@ draw = () => {
     line(origin[X], origin[Y], bob[X], bob[Y]);
     ellipse(bob[X], bob[Y], 32, 32);
 
-    angle += 0.01;
+    aAcc = -0.01 * sin(angle)
+
+    angle += aVel;
+    aVel += aAcc;
+
+    aVel *= 0.99;
 }
